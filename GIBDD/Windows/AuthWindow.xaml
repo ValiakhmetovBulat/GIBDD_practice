@@ -1,0 +1,39 @@
+﻿<Window x:Class="GIBDD.Windows.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GIBDD.Windows"
+        mc:Ignorable="d"
+        Title="AuthWindow" MinHeight="600"  MinWidth="400" Height="500" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="110"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Background="{StaticResource MainGreen}">
+            <Image Source="/Recources/gibdd_logo.png" Height="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20"/>
+            <Label Content="Инспекция ГИБДД" HorizontalAlignment="Center" FontSize="18" />
+        </StackPanel>
+        
+
+        <StackPanel Grid.Row="1" Background="{StaticResource AdditionalYellow}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Content="Логин"/>
+                <TextBox x:Name="tbLogin"></TextBox>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Content="Пароль"/>
+                <TextBox x:Name="tbPass"></TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Background="{StaticResource MainGreen}">
+            <TextBlock x:Name="tbBlock" Text="Время блокировки:" HorizontalAlignment="Center" FontSize="18" Foreground="{StaticResource MainRed}" Margin="5"/>
+            <Button x:Name="btnAuth" Content="Войти" Click="btnAuth_Click" Height="50"/>
+        </StackPanel>        
+    </Grid>
+</Window>

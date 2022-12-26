@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a81b71a302c47d0bdd9ff4e05e71030" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="GIBDDModel.ActorsOfAccident" Width="1.5" PointX="8" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDModel.CarColors" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDModel.Cars" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDModel.Drivers" Width="1.5" PointX="5.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDModel.EngineTypes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDModel.Inspector" Width="1.5" PointX="9.875" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDModel.Licences" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDModel.RegionCodes" Width="1.5" PointX="13.375" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDModel.RoadAccidentClassifications" Width="1.5" PointX="7.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDModel.RoadAccidents" Width="1.5" PointX="7.875" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="GIBDDModel.FK_ActorsOfAccident_Drivers" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDModel.FK_ActorsOfAccident_RoadAccidents" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDModel.FK_CarColor" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDModel.FK_Cars_EngineTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDModel.FK_DriverCar" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDModel.FK_DriverLicence" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDModel.FK_RoadAccidents_RoadAccidentClassifications" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

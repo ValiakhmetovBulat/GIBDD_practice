@@ -1,0 +1,33 @@
+﻿<Application x:Class="GIBDD.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GIBDD"
+             StartupUri="/Windows/AuthWindow.xaml">
+    <Application.Resources>
+        
+        <SolidColorBrush x:Key="MainGreen" Color="#FFB5D5CA"/>
+        <SolidColorBrush x:Key="MainRed" Color="#FFE0A9AF"/>
+        <SolidColorBrush x:Key="AdditionalBlue" Color="#FFD1EEFC"/>
+        <SolidColorBrush x:Key="AdditionalYellow" Color="#FFFFFCD6"/>
+        
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="{StaticResource AdditionalBlue}"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Application.Resources>
+</Application>

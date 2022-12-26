@@ -1,0 +1,71 @@
+﻿<Window x:Class="GIBDD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GIBDD"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1000" MinHeight="700" MinWidth="1000" x:Name="mWindow">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="{StaticResource AdditionalBlue}"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" 
+              Background="{StaticResource MainGreen}"
+              />
+        <Button 
+            x:Name="btnBack"
+            Width="70"
+            Content="Назад" 
+            HorizontalAlignment="Left" 
+            Background="{StaticResource AdditionalYellow}"
+            Margin="10" 
+            Click="btnBack_Click"
+            />
+        <Image 
+            Source="\Recources\gibdd_logo.png" 
+            HorizontalAlignment="Right" 
+            Margin="10"
+            />
+        <TextBlock 
+            Text="Инспекция ГИБДД" 
+            FontSize="18"
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"
+            />
+        
+        <Frame 
+            Grid.Row="1" 
+            x:Name="MainFrame" 
+            Background="{StaticResource AdditionalYellow}" 
+            ContentRendered="MainFrame_ContentRendered" 
+            NavigationUIVisibility="Hidden"
+            />
+
+        <Grid Grid.Row="2" Background="{StaticResource MainGreen}">
+            <StackPanel Orientation="Horizontal" 
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            >
+                <Button x:Name="btnShowDrivers" Content="Водители" Background="{StaticResource MainRed}" Click="btnShowDrivers_Click"/>
+                <Button x:Name="btnShowLicences" Content="Водительские удостоверения" Click="btnShowLicences_Click"/>
+                <Button x:Name="btnShowCars" Content="Транспортные средства" Click="btnShowCars_Click"/>
+                <!--<Button x:Name="btnShowFines" Content="Штрафы" Click="btnShowFines_Click"/>
+                <Button x:Name="btnShowAccidents" Content="ДТП" Click="btnShowAccidents_Click"/>-->
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+</Window>
