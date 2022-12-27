@@ -52,5 +52,31 @@ namespace GIBDD.Pages
         {
             Manager.MainFrame.Navigate(new AddEditCarPage((sender as Button).DataContext as Cars));
         }
+
+        private void btnDeleteCars_Click(object sender, RoutedEventArgs e)
+        {
+            var carsForRemoving = dgCars.SelectedItems.Cast<Cars>().ToList();
+
+            if (MessageBox.Show($"Вы точно хотите удалить выделенные {carsForRemoving.Count} элементов ?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    GIBDDEntities.GetContext().Cars.RemoveRange(carsForRemoving);
+                    GIBDDEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные успешно удалены");
+
+                    dgCars.ItemsSource = GIBDDEntities.GetContext().Cars.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btnAddCar_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditCarPage(null));
+        }
     }
 }

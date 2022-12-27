@@ -74,14 +74,12 @@ namespace GIBDD.Pages
 
             if (_currentLicence.Id == 0)
             {
+                MessageBox.Show(_currentLicence.LicenceDate.ToString());
                 GIBDDEntities.GetContext().Licences.Add(_currentLicence);
             }
 
-
             try
-            {
-                MessageBox.Show(_currentLicence.LicenceDate.ToString());
-                MessageBox.Show(_currentLicence.ExpireDate.ToString());
+            {                
                 GIBDDEntities.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена");
                 Manager.MainFrame.Navigate(new LicencePage());

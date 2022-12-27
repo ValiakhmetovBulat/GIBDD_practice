@@ -58,5 +58,26 @@ namespace GIBDD.Pages
         {
             Manager.MainFrame.Navigate(new AddEditLicencePage(null));
         }
+
+        private void btnDeleteLicences_Click(object sender, RoutedEventArgs e)
+        {
+            var licencesForRemoving = dgLicences.SelectedItems.Cast<Licences>().ToList();
+
+            if (MessageBox.Show($"Вы точно хотите удалить выделенные {licencesForRemoving.Count} элементов ?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    GIBDDEntities.GetContext().Licences.RemoveRange(licencesForRemoving);
+                    GIBDDEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные успешно удалены");
+
+                    dgLicences.ItemsSource = GIBDDEntities.GetContext().Licences.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
     }
 }

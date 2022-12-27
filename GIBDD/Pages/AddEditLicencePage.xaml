@@ -40,7 +40,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2">
             <Label Content="Категории" HorizontalAlignment="Center"/>
-            <TextBox x:Name="tbCategoires" Text="{Binding Categoires}"/>
+            <TextBox x:Name="tbCategoires" Text="{Binding Categories}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <Label Content="Серия удостоверения" HorizontalAlignment="Center"/>
