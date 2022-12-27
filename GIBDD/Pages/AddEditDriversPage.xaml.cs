@@ -34,6 +34,11 @@ namespace GIBDD.Pages
             comboLicence.ItemsSource = GIBDDEntities.GetContext().Licences.ToList();       
             comboCar.ItemsSource = GIBDDEntities.GetContext().Cars.ToList();
             
+            if (_currentDriver.Id != 0)
+            {
+                comboLicence.SelectedItem = _currentDriver.Licences;
+                comboCar.SelectedItem = _currentDriver.Cars;
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -62,7 +67,7 @@ namespace GIBDD.Pages
                 {
                     errors.AppendLine($"Поле: {item.Name} не может быть пустым");
                 }
-            }
+            }                           
 
             if (errors.Length > 0)
             {
@@ -72,6 +77,19 @@ namespace GIBDD.Pages
 
             _currentDriver.Licences = comboLicence.SelectedItem as Licences;
             _currentDriver.Cars = comboCar.SelectedItem as Cars;
+
+            if (_currentDriver.Id == 0)
+            {
+                foreach (var item in GIBDDEntities.GetContext().Drivers)
+                {
+                    if (item.Licences == _currentDriver.Licences)
+                    {
+                        MessageBox.Show("Данное удостоверение принадлежит другому водителю");
+                        return;
+                    }
+                        
+                }
+            }
 
             if (_currentDriver.Id == 0)
             {

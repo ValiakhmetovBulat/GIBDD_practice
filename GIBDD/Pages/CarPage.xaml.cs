@@ -22,10 +22,19 @@ namespace GIBDD.Pages
     /// </summary>
     public partial class CarPage : Page
     {
-        public CarPage()
+        public CarPage(Drivers driver = null)
         {
             InitializeComponent();
-            dgCars.ItemsSource = GIBDDEntities.GetContext().Cars.ToList();
+
+            if (driver != null)
+            {
+                var currentCar = GIBDDEntities.GetContext().Cars.ToList();
+                currentCar = currentCar.Where(p => p.Id.ToString().Equals(driver.Car.ToString())).ToList();
+
+                dgCars.ItemsSource = currentCar;
+            }
+            else 
+                dgCars.ItemsSource = GIBDDEntities.GetContext().Cars.ToList();
             
         }
 

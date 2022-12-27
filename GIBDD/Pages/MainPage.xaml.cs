@@ -24,8 +24,7 @@ namespace GIBDD.Pages
     {
         public MainPage(Licences licence = null, Cars car = null)
         {            
-            InitializeComponent();
-            lvDrivers.ItemsSource = GIBDDEntities.GetContext().Drivers.ToList();
+            InitializeComponent();            
 
             if (licence != null)
             {
@@ -34,13 +33,15 @@ namespace GIBDD.Pages
 
                 lvDrivers.ItemsSource = currentDrivers;
             }
-            if (car != null)
+            else if (car != null)
             {
                 var currentDrivers = GIBDDEntities.GetContext().Drivers.ToList();
                 currentDrivers = currentDrivers.Where(p => p.Car.ToString().Equals(car.Id.ToString())).ToList();
 
                 lvDrivers.ItemsSource = currentDrivers;
             }
+            else
+                lvDrivers.ItemsSource = GIBDDEntities.GetContext().Drivers.ToList();
         }
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -103,6 +104,16 @@ namespace GIBDD.Pages
                 MessageBox.Show("Водитель был успешно удален");
                 lvDrivers.ItemsSource = GIBDDEntities.GetContext().Drivers.ToList();
             }
+        }
+
+        private void btnFindLicence_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new LicencePage((sender as Button).DataContext as Drivers));
+        }
+
+        private void btnFindCar_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new CarPage((sender as Button).DataContext as Drivers));
         }
     }
 }

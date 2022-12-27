@@ -29,7 +29,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="2 2 2 2" Grid.RowSpan="11" Grid.ColumnSpan="2">
-                    <Grid Height="340" Width="250" Margin="10">
+                    <Grid Height="400" Width="250" Margin="10">
                         
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -48,6 +48,8 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
@@ -85,7 +87,9 @@
                         <TextBlock Grid.Row="10" Grid.Column="1" Text="{Binding Phone}"/>
                         <TextBlock Grid.Row="11" Grid.Column="1" Text="{Binding Email}"/>
 
-                        <Button Grid.Row="12" Grid.ColumnSpan="2" Height="30" Width="150" Content="Изменить" FontSize="12" Margin="10" x:Name="btnEditDriver" Click="btnEditDriver_Click"/>
+                        <Button Grid.Row="12" Grid.ColumnSpan="2" Height="30" Width="150" Content="Удостоверение" FontSize="12" Margin="3" x:Name="btnFindLicence" Click="btnFindLicence_Click"/>
+                        <Button Grid.Row="13" Grid.ColumnSpan="2" Height="30" Width="150" Content="ТC" FontSize="12" Margin="3" x:Name="btnFindCar" Click="btnFindCar_Click"/>
+                        <Button Grid.Row="14" Grid.ColumnSpan="2" Height="30" Width="150" Content="Изменить" FontSize="12" Margin="3" x:Name="btnEditDriver" Click="btnEditDriver_Click"/>
                     </Grid>
                     </Border>
                 </DataTemplate>

@@ -2,6 +2,7 @@
 using GIBDD.Entities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,41 +19,37 @@ using System.Windows.Shapes;
 namespace GIBDD.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddEditCarPage.xaml
+    /// Логика взаимодействия для AddEditLicencePage.xaml
     /// </summary>
-    public partial class AddEditCarPage : Page
+    public partial class AddEditLicencePage : Page
     {
-        private Cars _currentCar = new Cars();
-        public AddEditCarPage(Cars selectedCar)
+
+        private Licences _currentLicence = new Licences();
+        public AddEditLicencePage(Licences selectedLicence)
         {
             InitializeComponent();
 
-            if (selectedCar != null)
-                _currentCar = selectedCar;
+            if (selectedLicence != null)
+                _currentLicence = selectedLicence;
 
-            DataContext = _currentCar;
-            cmbColor.ItemsSource = GIBDDEntities.GetContext().CarColors.ToList();
-            cmbEngineType.ItemsSource = GIBDDEntities.GetContext().EngineTypes.ToList();
-
-            if (_currentCar.Id != 0)
+            if (_currentLicence.Id == 0)
             {
-                cmbColor.SelectedItem = _currentCar.CarColors;
-                cmbEngineType.SelectedItem = _currentCar.EngineTypes;
+                _currentLicence.LicenceDate = DateTime.Today;
+                _currentLicence.ExpireDate = DateTime.Today;
             }
+
+            DataContext = _currentLicence;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
-
-            var stackPanels = grid.Children.OfType<StackPanel>().ToList();
+            var stackPanels = grid.Children.OfType<StackPanel>();
             List<TextBox> textBoxes = new List<TextBox>();
-            List<ComboBox> comboBoxes = new List<ComboBox>();
-            
+
             foreach (StackPanel sp in stackPanels)
             {
                 textBoxes.AddRange(sp.Children.OfType<TextBox>());
-                comboBoxes.AddRange(sp.Children.OfType<ComboBox>());
             }
 
             foreach (var item in textBoxes)
@@ -62,15 +59,12 @@ namespace GIBDD.Pages
                     errors.AppendLine($"Поле: {item.Name} не может быть пустым");
                 }
             }
-            
-            foreach (var item in comboBoxes)
-            {
-                if (item.SelectedItem == null)
-                { 
-                    errors.AppendLine($"Поле: {item.Name} не может быть пустым");
-                }
-            }
-                      
+
+            if (_currentLicence.LicenceDate > DateTime.Now)
+                errors.AppendLine("Дата регистрации не может находится в будущем");
+
+            if (_currentLicence.LicenceDate > _currentLicence.ExpireDate)
+                errors.AppendLine("Дата регистрации не может быть позже даты истечения");
 
             if (errors.Length > 0)
             {
@@ -78,19 +72,19 @@ namespace GIBDD.Pages
                 return;
             }
 
-            _currentCar.CarColors = cmbColor.SelectedItem as CarColors;
-            _currentCar.EngineTypes = cmbEngineType.SelectedItem as EngineTypes;
-
-            if (_currentCar.Id == 0)
+            if (_currentLicence.Id == 0)
             {
-                GIBDDEntities.GetContext().Cars.Add(_currentCar);
+                GIBDDEntities.GetContext().Licences.Add(_currentLicence);
             }
+
 
             try
             {
+                MessageBox.Show(_currentLicence.LicenceDate.ToString());
+                MessageBox.Show(_currentLicence.ExpireDate.ToString());
                 GIBDDEntities.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена");
-                Manager.MainFrame.Navigate(new CarPage());
+                Manager.MainFrame.Navigate(new LicencePage());
             }
             catch (Exception ex)
             {

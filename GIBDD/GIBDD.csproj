@@ -118,6 +118,9 @@
     <Compile Include="Pages\AddEditDriversPage.xaml.cs">
       <DependentUpon>AddEditDriversPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddEditLicencePage.xaml.cs">
+      <DependentUpon>AddEditLicencePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CarPage.xaml.cs">
       <DependentUpon>CarPage.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AddEditDriversPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditLicencePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
